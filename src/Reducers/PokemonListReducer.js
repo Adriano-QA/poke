@@ -1,7 +1,8 @@
 const InitialState = {
     loading: false,
     data:[],
-    errorMsg:""
+    errorMsg:"",
+    count: 0
 };
 
 const PokemonListReducer = (state = InitialState, action) => {
@@ -16,8 +17,9 @@ const PokemonListReducer = (state = InitialState, action) => {
             return {
                 ...state,
                 loading:false,
-                data: action.payload,
-                errorMsg:""
+                data: action.payload.results,
+                errorMsg:"",
+                count: action.payload.count
             }; 
         case "POKEMON_LIST_ERROR":
             return {

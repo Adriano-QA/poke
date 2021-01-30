@@ -9,7 +9,7 @@ function App() {
   return (
     <div className='main'>
       <nav>
-        <NavLink to={'/pokemon/test'}> <img className='search' src={Search} alt="pesquisar" border="0"/></NavLink>
+        <NavLink to={'/pokemon/'}> <img className='search' src={Search} alt="pesquisar" border="0"/></NavLink>
       </nav>
       <Switch>
         <Route path={'/'} exact component={PokemonList}/>

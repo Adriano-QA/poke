@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import _ from 'lodash';
+import _, { toUpper } from 'lodash';
 import { GetPokemonList } from "../Actions/PokemonActions";
 import ErrorConexion from '../Assets/error.png';
 import PikachuError from "../Assets/pikachuError.png";
+import {Link} from "react-router-dom";
 
 const PokemonList = () => {
     const dispacht = useDispatch();
@@ -21,9 +22,19 @@ const PokemonList = () => {
 
     const showData = () => {
         if(!_.isEmpty(pokemonList.data)) {
-            return <div className='screenInformation'>
-                <img src="https://fontmeme.com/permalink/210130/f221a33ecb4bc25a28cf278f51753784.png" alt="fonte-de-pokemon" border="0"/>
-            </div>
+            return (
+                <div className='list'>
+                    {pokemonList.data.map(e => {
+                return (
+                <div className='pokemon-item'>
+                    <p className='item'>{toUpper(e.name)}</p>
+                    <Link to={`/pokemon/${e.name}`}><img src="https://fontmeme.com/permalink/210130/84aa43bdb1d4abb877d355b7db163ab7.png" alt="Ver mais" border="0"/></Link>
+                </div>
+                )             
+            })}
+                </div>
+            )
+            
         }
         if(pokemonList.loading) {
             return <div className='screenInformation'>
