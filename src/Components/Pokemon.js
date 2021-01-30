@@ -2,9 +2,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GetPokemon } from "../Actions/PokemonActions";
-import _ from "lodash";
+import _, { toUpper } from "lodash";
 import ErrorConexion from '../Assets/error.png';
 import PikachuError from "../Assets/pikachuError.png";
+import {NavLink} from 'react-router-dom';
+import Back from '../Assets/back.png';
 
 
 const Pokemon = (props) => {
@@ -63,11 +65,12 @@ const Pokemon = (props) => {
 
     return (
         <div className='pokemon-details'>
-        <h1>{pokemonName}</h1>
-        {showData()}
-
-    </div>
-
+            <nav>
+                <NavLink to={'/pokemon/'}> <img className='back' src={Back} alt="voltar" border="0"/></NavLink>
+            </nav>
+            <h1 className='poke-name'>{toUpper(pokemonName)}</h1>
+                {showData()}
+        </div>
     )
 };
 
