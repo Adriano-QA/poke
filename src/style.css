@@ -9,9 +9,17 @@
 
 
 body {
-  background: rgb(255,103,66);
-  background: linear-gradient(180deg, rgba(255,103,66,0.8435749299719888) 0%, rgba(255,34,10,0.8799894957983193) 0%, rgba(255,255,255,1) 100%);
+  background: rgb(0,191,255);
+background: linear-gradient(180deg, rgba(0,191,255,1) 0%, rgba(0,191,255,1) 0%, rgba(255,255,255,1) 100%);
   background-repeat: repeat;
+}
+
+.main {
+  border-radius: 7px;
+}
+
+.logo {
+  margin-left: 490px;
 }
 
 p {
@@ -24,17 +32,15 @@ nav {
   width: 100%;
   height: 60px;
   align-items: center;
-  justify-content: flex-end;
 }
 
 nav a {
   margin-right: 50px;
 }
 
-.search {
-  margin-top: 0px;
-  width: 150px;
-  height: 50px;
+.back {
+  flex-flow: row-reverse;
+  margin:10px;
 }
 
 .screenInformation {
@@ -70,8 +76,43 @@ nav a {
   background-image: url(./Assets//background.png);
   background-position: center;
   background-size: cover;
-  height: 562px;
+  height: 622px;
 }
+
+.pokemon {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 10px;
+}
+
+.item-images h1 , .item-stats h1, .item-abilities h1{
+  font-family: 'pokemonsolid';
+  text-align: center;
+}
+
+.item-stats, .item-abilities, .item-images {
+  background-color:#00BFFF;
+  text-align: center;
+}
+
+.poke-name {
+  margin: 10px;
+  font-family:'Courier New', Courier, monospace
+}
+
+.item-images p , .item-stats p, .item-abilities p {
+  margin: 10px;
+  font-family:'Courier New', Courier, monospace
+}
+
+
+
+
+
+
+
+
+
 
 
 
