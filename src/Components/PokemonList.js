@@ -6,7 +6,8 @@ import { GetPokemonList } from "../Actions/PokemonActions";
 import ErrorConexion from '../Assets/error.png';
 import PikachuError from "../Assets/pikachuError.png";
 import {Link} from "react-router-dom";
-import ReactPaginate from 'react-paginate';
+import InfiniteScroll from 'react-infinite-scroller';
+
 
 const PokemonList = () => {
     const dispacht = useDispatch();
@@ -60,15 +61,14 @@ const PokemonList = () => {
         <div>
             <img className='logo' src="https://fontmeme.com/permalink/210130/9d6ad5399ee8fb50083faf7094eb8eab.png" alt="fonte-de-pokemon" border="0"/>        {showData()}
             {!_.isEmpty(pokemonList.data) && (
-                <ReactPaginate
-                    pageCount={Math.ceil(pokemonList.count / 15)}
-                    pageRangeDisplayed={2}
-                    marginPagesDisplayed={1}
-                    onPageChange={(data) => fecthData(data.selected + 1)}
-                    containerClassName={"pagination"}
-                    nextLabel={'Próximo'}
-                    previousLabel={'Anterior'}
-                />
+                <InfiniteScroll
+                    pageStart={0}
+                    loadMore={(data) => fecthData(data.selected + 1)}
+                    hasMore={true}
+                    loader={<div className="loader" key={0}>Loading ...</div>}
+                >
+                    {showData} 
+                </InfiniteScroll>
             )}
         </div>
     )
