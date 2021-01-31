@@ -1,5 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import _, { toUpper } from 'lodash';
 import { GetPokemonList } from "../Actions/PokemonActions";
@@ -7,9 +8,11 @@ import ErrorConexion from '../Assets/error.png';
 import PikachuError from "../Assets/pikachuError.png";
 import {Link} from "react-router-dom";
 import InfiniteScroll from 'react-infinite-scroller';
+import Search from "../Assets/search.png";
 
 
-const PokemonList = () => {
+const PokemonList = (props) => {
+    const [search, setSearch] = useState('');
     const dispacht = useDispatch();
     const pokemonList = useSelector(state => state.PokemonList);
 
@@ -59,17 +62,24 @@ const PokemonList = () => {
 
     return (
         <div>
-            <img className='logo' src="https://fontmeme.com/permalink/210130/9d6ad5399ee8fb50083faf7094eb8eab.png" alt="fonte-de-pokemon" border="0"/>        {showData()}
-            {!_.isEmpty(pokemonList.data) && (
-                <InfiniteScroll
-                    pageStart={0}
-                    loadMore={(data) => fecthData(data.selected + 1)}
-                    hasMore={true}
-                    loader={<div className="loader" key={0}>Loading ...</div>}
-                >
-                    {showData} 
-                </InfiniteScroll>
-            )}
+            <div className='search-wrapper'>
+                <input type='text' onChange={e => setSearch(e.target.value)} placeholder='Pesquisar'/>
+                <a onClick={() => props.history.push(`/pokemon/${search}`)}><img src={Search} alt='Pesquisar' /></a>
+
+            </div>
+                <img className='logo' src="https://fontmeme.com/permalink/210130/9d6ad5399ee8fb50083faf7094eb8eab.png" alt="fonte-de-pokemon" border="0"/>        {showData()}
+                {!_.isEmpty(pokemonList.data) && (
+                    <InfiniteScroll
+                        pageStart={0}
+                        loadMore={(data) => fecthData(data.selected + 1)}
+                        hasMore={true}
+                        loader={<div className='screenInformation'>
+                            <img src='https://fontmeme.com/permalink/210130/72be44b74b45e99113b2f860661517c8.png' border="0" alt='Carregando'/>
+                            </div>}
+                    >
+                        {showData} 
+                    </InfiniteScroll>
+                )}
         </div>
     )
 };
