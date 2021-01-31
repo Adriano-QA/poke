@@ -91,7 +91,6 @@ nav a {
 }
 
 .item-stats, .item-abilities, .item-images {
-  background-color:#00BFFF;
   text-align: center;
 }
 
@@ -103,6 +102,18 @@ nav a {
 .item-images p , .item-stats p, .item-abilities p {
   margin: 10px;
   font-family:'Courier New', Courier, monospace
+}
+
+.pagination {
+  width: 500px;
+  display: flex;
+  margin: auto;
+  list-style: none;
+  padding: 0;
+  justify-content: space-between;
+  cursor: pointer;
+  font-family: 'pokemonsolid';
+
 }
 
 
