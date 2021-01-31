@@ -6,6 +6,7 @@ import { GetPokemonList } from "../Actions/PokemonActions";
 import ErrorConexion from '../Assets/error.png';
 import PikachuError from "../Assets/pikachuError.png";
 import {Link} from "react-router-dom";
+import ReactPaginate from 'react-paginate';
 
 const PokemonList = () => {
     const dispacht = useDispatch();
@@ -21,6 +22,11 @@ const PokemonList = () => {
     }
 
     const showData = () => {
+        if(pokemonList.loading) {
+            return <div className='screenInformation'>
+                <img src='https://fontmeme.com/permalink/210130/72be44b74b45e99113b2f860661517c8.png' border="0" alt='Carregando'/>
+            </div>
+        }
         if(!_.isEmpty(pokemonList.data)) {
             return (
                 <div className='list'>
@@ -36,11 +42,7 @@ const PokemonList = () => {
             )
             
         }
-        if(pokemonList.loading) {
-            return <div className='screenInformation'>
-                <img src='https://fontmeme.com/permalink/210130/72be44b74b45e99113b2f860661517c8.png' border="0" alt='Carregando'/>
-            </div>
-        }
+  
         if(pokemonList.errorMsg !== "") {
             return <div className='screenInformation'>
             <img src={ErrorConexion} alt="falha de conexão" border="0"/>
@@ -55,7 +57,19 @@ const PokemonList = () => {
     }
 
     return (
-        <div>{showData()}</div>
+        <div>{showData()}
+        {!_.isEmpty(pokemonList.data) && (
+            <ReactPaginate
+                pageCount={Math.ceil(pokemonList.count / 15)}
+                pageRangeDisplayed={2}
+                marginPagesDisplayed={1}
+                onPageChange={(data) => fecthData(data.selected + 1)}
+                containerClassName={"pagination"}
+                nextLabel={'Próximo'}
+                previousLabel={'Anterior'}
+            />
+        )}
+        </div>
     )
 };
 
