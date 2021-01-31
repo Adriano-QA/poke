@@ -104,16 +104,21 @@ nav a {
   font-family:'Courier New', Courier, monospace
 }
 
-.pagination {
-  width: 500px;
+.search-wrapper {
   display: flex;
-  margin: auto;
-  list-style: none;
-  padding: 0;
-  justify-content: space-between;
-  cursor: pointer;
+  width: 100%;
+  margin-left:1000px;
+  margin-top: 20px;
   font-family: 'pokemonsolid';
+}
 
+.search-wrapper input{
+  height: 40px;
+  margin-right: 10px;
+}
+
+.search-wrapper a{
+  cursor: pointer;
 }
 
 
