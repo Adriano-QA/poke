@@ -57,18 +57,19 @@ const PokemonList = () => {
     }
 
     return (
-        <div>{showData()}
-        {!_.isEmpty(pokemonList.data) && (
-            <ReactPaginate
-                pageCount={Math.ceil(pokemonList.count / 15)}
-                pageRangeDisplayed={2}
-                marginPagesDisplayed={1}
-                onPageChange={(data) => fecthData(data.selected + 1)}
-                containerClassName={"pagination"}
-                nextLabel={'Próximo'}
-                previousLabel={'Anterior'}
-            />
-        )}
+        <div>
+            <img className='logo' src="https://fontmeme.com/permalink/210130/9d6ad5399ee8fb50083faf7094eb8eab.png" alt="fonte-de-pokemon" border="0"/>        {showData()}
+            {!_.isEmpty(pokemonList.data) && (
+                <ReactPaginate
+                    pageCount={Math.ceil(pokemonList.count / 15)}
+                    pageRangeDisplayed={2}
+                    marginPagesDisplayed={1}
+                    onPageChange={(data) => fecthData(data.selected + 1)}
+                    containerClassName={"pagination"}
+                    nextLabel={'Próximo'}
+                    previousLabel={'Anterior'}
+                />
+            )}
         </div>
     )
 };
