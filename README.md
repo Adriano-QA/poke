@@ -33,4 +33,4 @@ Este é um recurso extremanente importante dentro do REACT, existe uma série de
         <h4>ComponentWillUnmount</h4>
             <p>Este por sua vez é o último método do ciclo de vida do componente e é executado antes do componente ser removido da DOM</p>
     <h3>Outros métodos</h3>
-            <p>Existem outros métodos que podem ser usados como: <i>componentWillRecieveProps</i>, <i>shouldComponentUpdate</i> entre outros, os citados anteriormente são basicamente os mais usados de forma simplificada, os outros tem suas espcificidades dentro da implementação desajada. </p>
+            <p>Existem outros métodos que podem ser usados como: <i>componentWillRecieveProps</i>, <i>shouldComponentUpdate</i> entre outros, os citados anteriormente são basicamente os mais usados de forma simplificada, os outros tem suas espcificidades dentro da implementação desejada. </p>
