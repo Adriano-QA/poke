@@ -10,8 +10,9 @@
 
 body {
   background: rgb(0,191,255);
-background: linear-gradient(180deg, rgba(0,191,255,1) 0%, rgba(0,191,255,1) 0%, rgba(255,255,255,1) 100%);
-  background-repeat: repeat;
+  background: linear-gradient(180deg, rgba(0,191,255,1) 0%, rgba(0,191,255,1) 0%, rgba(255,255,255,1) 100%);
+  width: 100%;
+
 }
 
 .main {
@@ -106,8 +107,7 @@ nav a {
 
 .search-wrapper {
   display: flex;
-  width: 100%;
-  margin-left:1000px;
+  margin-left:950px;
   margin-top: 20px;
   font-family: 'pokemonsolid';
 }
@@ -119,6 +119,18 @@ nav a {
 
 .search-wrapper a{
   cursor: pointer;
+}
+
+.pagination {
+  width: 500px;
+  display: flex;
+  margin: auto;
+  list-style: none;
+  padding: 0;
+  justify-content: space-between;
+  cursor: pointer;
+  font-family: 'pokemonsolid';
+
 }
 
 

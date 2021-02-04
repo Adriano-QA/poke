@@ -7,8 +7,9 @@ import { GetPokemonList } from "../Actions/PokemonActions";
 import ErrorConexion from '../Assets/error.png';
 import PikachuError from "../Assets/pikachuError.png";
 import {Link} from "react-router-dom";
-import InfiniteScroll from 'react-infinite-scroller';
 import Search from "../Assets/search.png";
+import ReactPaginate from 'react-paginate';
+
 
 
 const PokemonList = (props) => {
@@ -38,7 +39,7 @@ const PokemonList = (props) => {
                 return (
                 <div className='pokemon-item'>
                     <p className='item'>{toUpper(e.name)}</p>
-                    <Link to={`/pokemon/${e.name}`}><img src="https://fontmeme.com/permalink/210130/84aa43bdb1d4abb877d355b7db163ab7.png" alt="Ver mais" border="0"/></Link>
+                    <Link to={`/pokemon/${e.name}`} key={e.id}><img src="https://fontmeme.com/permalink/210130/84aa43bdb1d4abb877d355b7db163ab7.png" alt="Ver mais" border="0"/></Link>
                 </div>
                 )             
             })}
@@ -68,18 +69,20 @@ const PokemonList = (props) => {
 
             </div>
                 <img className='logo' src="https://fontmeme.com/permalink/210130/9d6ad5399ee8fb50083faf7094eb8eab.png" alt="fonte-de-pokemon" border="0"/>        {showData()}
+             
+                 <div>{showData()}
                 {!_.isEmpty(pokemonList.data) && (
-                    <InfiniteScroll
-                        pageStart={0}
-                        loadMore={(data) => fecthData(data.selected + 1)}
-                        hasMore={true}
-                        loader={<div className='screenInformation'>
-                            <img src='https://fontmeme.com/permalink/210130/72be44b74b45e99113b2f860661517c8.png' border="0" alt='Carregando'/>
-                            </div>}
-                    >
-                        {showData} 
-                    </InfiniteScroll>
-                )}
+                    <ReactPaginate
+                        pageCount={Math.ceil(pokemonList.count / 15)}
+                        pageRangeDisplayed={2}
+                        marginPagesDisplayed={1}
+                        onPageChange={(data) => fecthData(data.selected + 1)}
+                        containerClassName={"pagination"}
+                        nextLabel={'Próximo'}
+                        previousLabel={'Anterior'}
+                    />
+        )}
+        </div>
         </div>
     )
 };
